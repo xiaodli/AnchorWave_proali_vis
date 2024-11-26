@@ -43,7 +43,7 @@ The following is part sorghum fai file.
 Note:
 
 1. You need to keep the chromosome rows you want to visualize in the fai file.
-2. You need to change the fai file name and anchors filename  in the following code.
+2. You need to change the fai filename, anchors filename and output filename in the following code.
 3. You need to change the x-axis, y-axis label(`labs(x="maize", y="sorghum")`).
 
 ```R
