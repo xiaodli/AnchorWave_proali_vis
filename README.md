@@ -40,8 +40,12 @@ The following is part sorghum fai file.
 
 ### R code
 
-```R
+Note:
 
+1. You need to keep the chromosome rows you want to visualize in the fai file.
+2. You need to change the fai file name and anchors filename  in the following code.
+
+```R
 library(ggplot2)
 changetoM <- function ( position ){
   position=position/1000000;
