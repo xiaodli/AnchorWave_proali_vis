@@ -44,6 +44,7 @@ Note:
 
 1. You need to keep the chromosome rows you want to visualize in the fai file.
 2. You need to change the fai file name and anchors filename  in the following code.
+3. You need to change the x-axis, y-axis label(`labs(x="maize", y="sorghum")`).
 
 ```R
 library(ggplot2)
