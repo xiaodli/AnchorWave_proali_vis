@@ -89,10 +89,6 @@ blank_df[columns_to_convert_int] <- lapply(blank_df[columns_to_convert_int], as.
 blank_df$refChr <- as.factor(blank_df$refChr)
 blank_df$queryChr <- as.factor(blank_df$queryChr)
 
-# convert unit to M
-blank_df$refLength <- blank_df$refLength
-blank_df$queryLength <- blank_df$queryLength
-
 # from fai get chr
 ref_chr_vector <- blank_df$refChr
 query_chr_vector <- blank_df$queryChr
