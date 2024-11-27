@@ -53,16 +53,20 @@ changetoM <- function ( position ){
   paste(position, "M", sep="")
 }
 
-# read fai first and seconf col.
-# You need to retain chromosome lines which you want to display.
+# read fai file. (first and second column)
 query_fai <- read.table("maize.fai", header=F)
 query_length <- query_fai[, 1:2]
+colnames(query_length) <- c("queryChr", "length")
+query_length$queryChr <- as.character(query_length$queryChr)
+query_length$length <- as.integer(query_length$length)
+query_string_vector <- query_length$queryChr
 
 ref_fai <- read.table("sorghum.fai", header=F)
 ref_length <- ref_fai[, 1:2]
-
-colnames(query_length) <- c("queryChr", "length")
 colnames(ref_length) <- c("refChr", "length")
+ref_length$refChr <- as.character(ref_length$refChr)
+ref_length$length <- as.integer(ref_length$length)
+ref_string_vector <- ref_length$refChr
 
 # get blank df
 blank_df <- data.frame(matrix(nrow = 0, ncol = 4))
@@ -75,7 +79,6 @@ for (i in 1:nrow(ref_length)) {
     queryChr <- queryRowData[1, "queryChr"]
     queryChrLength <- queryRowData[1, "length"]
     new_row <- c(refChr, refChrLength, queryChr, queryChrLength)
-    new_row
     blank_df <- rbind(blank_df, new_row)
   }
 }
@@ -83,23 +86,20 @@ blank_colnames <- c("refChr", "refLength", "queryChr", "queryLength")
 colnames(blank_df) <- blank_colnames
 
 # convert column's class(factor and integer)
-columns_to_convert_str <- c("refChr", "queryChr")
-columns_to_convert_int <- c("refLength", "queryLength")
-blank_df[columns_to_convert_str] <- lapply(blank_df[columns_to_convert_str], as.character)
-blank_df[columns_to_convert_int] <- lapply(blank_df[columns_to_convert_int], as.integer)
-blank_df$refChr <- as.factor(blank_df$refChr)
-blank_df$queryChr <- as.factor(blank_df$queryChr)
-
-# from fai get chr
-ref_chr_vector <- blank_df$refChr
-query_chr_vector <- blank_df$queryChr
+blank_df$refLength <- as.integer(blank_df$refLength)
+blank_df$queryLength <- as.integer(blank_df$queryLength)
+blank_df$refChr <- factor(blank_df$refChr, levels = ref_string_vector)
+blank_df$queryChr <- factor(blank_df$queryChr, levels = query_string_vector)
 
 # read anchors file generated from AnchorWave.
 data = read.table("sb_zm.collinearity", header=T)
-data = data[which(data$refChr %in% ref_chr_vector),]
-data = data[which(data$queryChr %in% query_chr_vector),]
-data$refChr = as.factor(data$refChr)
-data$queryChr = as.factor(data$queryChr)
+data$refChr <- as.character(data$refChr)
+data$queryChr <- as.character(data$queryChr)
+data = data[which(data$refChr %in% ref_string_vector),]
+data = data[which(data$queryChr %in% query_string_vector),]
+
+data$refChr = factor(data$refChr, levels = ref_string_vector)
+data$queryChr = factor(data$queryChr, levels = query_string_vector)
 
 plot = ggplot(data=data, aes(x=queryStart, y=referenceStart))+
   facet_grid(refChr~queryChr, scales = "free", space = "free")+
