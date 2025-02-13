@@ -79,9 +79,12 @@ for (i in 1:nrow(ref_length)) {
     queryChr <- queryRowData[1, "queryChr"]
     queryChrLength <- queryRowData[1, "length"]
     new_row <- c(refChr, refChrLength, queryChr, queryChrLength)
+    new_row_zero <- c(refChr, 0, queryChr, 0)
     blank_df <- rbind(blank_df, new_row)
+    blank_df <- rbind(blank_df, new_row_zero)
   }
 }
+
 blank_colnames <- c("refChr", "refLength", "queryChr", "queryLength")
 colnames(blank_df) <- blank_colnames
 
