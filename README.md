@@ -128,3 +128,9 @@ dev.off()
 <p align="center">
 <img src="./sb_zm.colinearity.png" alt= sb_zm.collinearity.png width="800px" background-color="#ffffff" />
 </p>
+
+## Example2
+
+<p align="center">
+<img src="./ten.line.png" alt= ./ten.line.png width="800px" background-color="#ffffff" />
+</p>
