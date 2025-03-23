@@ -1,3 +1,12 @@
+# -*- encoding: utf-8 -*-
+'''
+@File    :   line_proali_pangenome.py
+@Time    :   2025/03/23 21:22:45
+@Author  :   xiao dong li
+@Version :   1.0
+@Contact :   xiaodongli2405@gmail.com
+'''
+
 import configparser
 import argparse
 import line_proali_pangenome
