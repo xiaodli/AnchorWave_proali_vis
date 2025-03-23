@@ -176,6 +176,8 @@ savefig = ten.line.png
 
    3. remove_chromosome_prefix is chromosome prefix(comma separated).
 
+### line plot
+
 <p align="center">
 <img src="./ten.line.png" alt= ./ten.line.png width="800px" background-color="#ffffff" />
 </p>
