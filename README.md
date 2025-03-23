@@ -141,16 +141,7 @@ python main.py line_proali -c line.conf
 Note:
 The following is `line.conf` file.
 
-```text
-[line]
-collinearity = 1.Kronos_Svevo.anno.3.anchormove,2.Svevo_XM001097.anno.3.anchormove,3.XM001097_NU00021.anno.3.anchormove,4.NU00021_IG77365.anno.3.anchormove,5.IG77365_IG99236.anno.3.anchormove,6.IG99236_PI294478.anno.3.anchormove,7.PI294478_NU01905.anno.3.anchormove,8.NU01905_NU01954.anno.3.anchormove,9.NU01954_Zavitan.anno.3.anchormove
-# fig from bottom to top (ref:Kronos, query:Svevo, ref:Svevo:query:XM001097, ref:XM001097:query:NU00021)
-length_file = Kronos.length.txt,Svevo.length.txt,XM001097.length.txt,NU00021.length.txt,IG77365.length.txt,IG99236.length.txt,PI294478.length.txt,NU01905.length.txt,NU01954.length.txt,Zavitan.length.txt
-prefix = Kronos,Svevo,XM001097,NU00021,IG77365,IG99236,PI294478,NU01905,NU01954,Zavitan
-remove_chromosome_prefix = ""
-text_font_size = 7
-savefig = ten.line.png
-```
+
 
 1. The following is length file(chr and length column is necessary and tab sep).
 
