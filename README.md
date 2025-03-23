@@ -152,30 +152,29 @@ text_font_size = 7
 savefig = ten.line.png
 ```
 
-  1. The following is length file(chr and length column is necessary and tab sep).
+1. The following is length file(chr and length column is necessary and tab sep).
 
-  ```text
-  chr  length  total_gene
-  1A  611319266  3772
-  1B  749393777  4158
-  2A  793380695  4950
-  2B  832257163  5398
-  3A  762016299  4530
-  3B  864951163  4947
-  4A  766591834  4214
-  4B  703924636  3578
-  5A  721915144  4785
-  5B  734861517  4869
-  6A  633522200  3588
-  6B  742827932  3996
-  7A  761831191  4622
-  7B  762926078  4011
-    ```
+```text
+chr  length  total_gene
+1A  611319266  3772
+1B  749393777  4158
+2A  793380695  4950
+2B  832257163  5398
+3A  762016299  4530
+3B  864951163  4947
+4A  766591834  4214
+4B  703924636  3578
+5A  721915144  4785
+5B  734861517  4869
+6A  633522200  3588
+6B  742827932  3996
+7A  761831191  4622
+7B  762926078  4011
+```
 
-   2. prefix is species name.
+2. prefix is species name.
 
-   3. remove_chromosome_prefix is chromosome prefix(comma separated).
-
+3. remove_chromosome_prefix is chromosome prefix(comma separated).
 
 ### line plot
 
