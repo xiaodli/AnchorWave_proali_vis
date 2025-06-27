@@ -519,7 +519,12 @@ class Line:
         zipped_three_pair = list(zip(strip_collinearity_file_list, new_prefix, new_length_file_list_df))
         # print(zipped_three_pair)
         
-        plt.rcParams['font.family'] = "Times New Roman"
+        plt.rcParams['font.family'] = 'serif'
+        plt.rcParams['font.serif'] = ['Times New Roman', 'DejaVu Serif', 'Bitstream Vera Serif',
+                                      'Computer Modern Roman',
+                                      'New Century Schoolbook', 'Century Schoolbook L', 'Utopia',
+                                      'ITC Bookman', 'Bookman', 'Nimbus Roman No9 L', 'Times', 'Palatino', 'Charter',
+                                      'serif']
         fig, ax = plt.subplots(figsize=(14, 8), facecolor='white')
         ax.set_aspect('equal')
 
