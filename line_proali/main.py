@@ -48,7 +48,7 @@ def run_line(parameter):
         config_par.read(parameter.conf)
     line_proali_pangenome.Line(config_par, parameter).run()
 
-parser = argparse.ArgumentParser(description='AnchorWave proali subcommand anchors plot.', prog="quota_Anchor")
+parser = argparse.ArgumentParser(description='AnchorWave proali subcommand anchors plot.')
 parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0.0')
 subparsers = parser.add_subparsers(title='Proali anchors visualization', dest='analysis')
 # AnchorWave proali anchors plot

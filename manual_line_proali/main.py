@@ -44,7 +44,7 @@ def run_line(parameter):
     file_empty(parameter.conf)
     wheat_line_proali_pangenome.Line(config_par).run()
 
-parser = argparse.ArgumentParser(description='Conduct strand and WGD aware syntenic gene identification for a pair of genomes using the longest path algorithm implemented in AnchorWave.', prog="quota_Anchor")
+parser = argparse.ArgumentParser(description='Conduct strand and WGD aware syntenic gene identification for a pair of genomes using the longest path algorithm implemented in AnchorWave.')
 parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.0.1')
 subparsers = parser.add_subparsers(title='Gene collinearity analysis', dest='analysis')
 # collinearity AnchorWave proali anchors plot
