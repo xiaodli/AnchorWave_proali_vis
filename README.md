@@ -1,6 +1,6 @@
 # AnchorWave `proali` subcommand's anchors result visualization
 
-## Dotplot visualization
+## Dotplot visualization(ggplot2)
 
 The length of the query and reference corresponding to each facet is equal to the actual chromosome length.
 
@@ -53,7 +53,7 @@ plot_total("anchors", "query.fai", "ref.fai", "query", "ref", "anchors.png")
 <img src="./anchors.png" alt= anchors.png width="800px" background-color="#ffffff" />
 </p>
 
-## line style visualization
+## line style visualization(please install matplotlib, seaborn, pandas, numpy pkg)
 
 You can vis multiple anchors file by raw_line_proali module
 
