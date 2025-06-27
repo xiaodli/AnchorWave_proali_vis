@@ -64,7 +64,7 @@ plot_total <- function (anchors_file, query_fai, ref_fai, query_label, ref_label
     labs(x=query_label, y=ref_label)+scale_x_continuous(labels=changetoM, expand=c(0, 0)) + scale_y_continuous(labels=changetoM, expand=c(0, 0)) +
     theme(axis.line = element_blank(),
           panel.spacing = unit(0, "mm"),
-          strip.background = element_rect(color = "white"),
+          strip.background = element_rect(fill = "white", color="white"),
           panel.background = element_blank(),
           panel.border = element_rect(fill=NA,color="black", linewidth=0.5, linetype="solid"),
           axis.text.y = element_text( colour = "black"),

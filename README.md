@@ -1,4 +1,4 @@
-# AnchorWave `proali` subcommand anchors result visualization
+# AnchorWave `proali` subcommand's anchors result visualization
 
 ## Dotplot visualization
 
@@ -64,7 +64,7 @@ python main.py -h
 python main.py line_proali -i 1.Kronos_Svevo.anno.3.anchormove,2.Svevo_XM001097.anno.3.anchormove,3.XM001097_NU00021.anno.3.anchormove,4.NU00021_IG77365.anno.3.anchormove,5.IG77365_IG99236.anno.3.anchormove,6.IG99236_PI294478.anno.3.anchormove,7.PI294478_NU01905.anno.3.anchormove,8.NU01905_NU01954.anno.3.anchormove,9.NU01954_Zavitan.anno.3.anchormove -o ten.line.png -l Kronos.length.txt,Svevo.length.txt,XM001097.length.txt,NU00021.length.txt,IG77365.length.txt,IG99236.length.txt,PI294478.length.txt,NU01905.length.txt,NU01954.length.txt,Zavitan.length.txt -n Kronos,Svevo,XM001097,NU00021,IG77365,IG99236,PI294478,NU01905,NU01954,Zavitan -rm "0" -cf 7 -sf 7 -it -sc "red,blue" -cs "four_colors" -al -gs "compact"
 ```
 
-1. The following is length file(chr and length column is necessary, tab sep and no matter how many columns the file has, only the first two are used.).
+1. The following is length file (chr and length column is necessary, tab sep and no matter how many columns the file has, only the first two are used).
 
 ```text
 chr  length  total_gene
