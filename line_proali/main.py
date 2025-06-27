@@ -9,7 +9,7 @@
 
 import configparser
 import argparse
-import line_proali_pangenome
+import wheat_line_proali_pangenome
 from pathlib import Path
 import os
 import sys
@@ -42,7 +42,7 @@ def run_line(parameter):
     config_par = configparser.ConfigParser()
     config_par.read(parameter.conf)
     file_empty(parameter.conf)
-    line_proali_pangenome.Line(config_par).run()
+    wheat_line_proali_pangenome.Line(config_par).run()
 
 parser = argparse.ArgumentParser(description='Conduct strand and WGD aware syntenic gene identification for a pair of genomes using the longest path algorithm implemented in AnchorWave.', prog="quota_Anchor")
 parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.0.1')

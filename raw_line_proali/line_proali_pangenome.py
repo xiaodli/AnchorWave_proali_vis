@@ -2,7 +2,7 @@
 '''
 @File    :   line_proali_pangenome.py
 @Time    :   2025/03/23 21:22:45
-@Author  :   xiao dong li
+@Author  :   xiaodong li
 @Version :   1.0.0
 @Contact :   xiaodongli2405@gmail.com
 '''
