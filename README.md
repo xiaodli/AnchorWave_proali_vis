@@ -1,4 +1,4 @@
-# AnchorWave anchors result visualization
+# AnchorWave `proali` subcommand anchors result visualization
 
 ## Dotplot visualization
 
@@ -40,85 +40,10 @@ The following is part sorghum fai file.
 10    61233695    632785589    60    61
 ```
 
-### R code
+### Running R code
 
 ```R
-library(ggplot2)
-changetoM <- function ( position ){
-  position=position/1000000;
-  paste(position, "M", sep="")
-}
-plot_total <- function (anchors_file, query_fai, ref_fai, query_label, ref_label, output_file){
-  # read fai file. (first and second column)
-  query_fai <- read.table(query_fai, header=F)
-  query_length <- query_fai[, 1:2]
-  colnames(query_length) <- c("queryChr", "length")
-  query_length$queryChr <- as.character(query_length$queryChr)
-  query_length$length <- as.integer(query_length$length)
-  query_string_vector <- query_length$queryChr
-  
-  ref_fai <- read.table(ref_fai, header=F)
-  ref_length <- ref_fai[, 1:2]
-  colnames(ref_length) <- c("refChr", "length")
-  ref_length$refChr <- as.character(ref_length$refChr)
-  ref_length$length <- as.integer(ref_length$length)
-  ref_string_vector <- ref_length$refChr
-  
-  # get blank df
-  blank_df <- data.frame(matrix(nrow = 0, ncol = 4))
-  for (i in 1:nrow(ref_length)) {
-    refRowData <- ref_length[i, ]
-    refChr <- refRowData[1, "refChr"]
-    refChrLength <- refRowData[1, "length"]
-    for (j in 1:nrow(query_length)) {
-      queryRowData <- query_length[j, ]
-      queryChr <- queryRowData[1, "queryChr"]
-      queryChrLength <- queryRowData[1, "length"]
-      new_row <- c(refChr, refChrLength, queryChr, queryChrLength)
-      new_row_zero <- c(refChr, 0, queryChr, 0)
-      blank_df <- rbind(blank_df, new_row)
-      blank_df <- rbind(blank_df, new_row_zero)
-    }
-  }
-  
-  blank_colnames <- c("refChr", "refLength", "queryChr", "queryLength")
-  colnames(blank_df) <- blank_colnames
-  
-  # convert column's class(factor and integer)
-  blank_df$refLength <- as.integer(blank_df$refLength)
-  blank_df$queryLength <- as.integer(blank_df$queryLength)
-  blank_df$refChr <- factor(blank_df$refChr, levels = ref_string_vector)
-  blank_df$queryChr <- factor(blank_df$queryChr, levels = query_string_vector)
-  
-  # read anchors file generated from AnchorWave.
-  data = read.table(anchors_file, header=T)
-  print(data)
-  data$refChr <- as.character(data$refChr)
-  data$queryChr <- as.character(data$queryChr)
-  data = data[which(data$refChr %in% ref_string_vector),]
-  data = data[which(data$queryChr %in% query_string_vector),]
-  
-  data$refChr = factor(data$refChr, levels = ref_string_vector)
-  data$queryChr = factor(data$queryChr, levels = query_string_vector)
-  
-  plot = ggplot(data=data, aes(x=queryStart, y=referenceStart))+
-    facet_grid(refChr~queryChr, scales = "free", space = "free")+
-    geom_point(size=0.5, aes(color=strand)) + 
-    geom_blank(data=blank_df, aes(x=queryLength, y=refLength)) +
-    theme_grey(base_size = 30) +
-    labs(x=query_label, y=ref_label)+scale_x_continuous(labels=changetoM, expand=c(0, 0)) + scale_y_continuous(labels=changetoM, expand=c(0, 0)) +
-    theme(axis.line = element_blank(),
-          panel.spacing = unit(0, "mm"),
-          strip.background = element_rect(color = "white"),
-          panel.background = element_blank(),
-          panel.border = element_rect(fill=NA,color="black", linewidth=0.5, linetype="solid"),
-          axis.text.y = element_text( colour = "black"),
-          legend.position='none',
-          axis.text.x = element_text(angle=300, hjust=0, vjust=1, colour = "black") )
-  png(output_file , width=2000, height=1500)
-  print(plot)
-  dev.off()
-}
+source("dotplot.R")
 plot_total("anchors", "query.fai", "ref.fai", "query", "ref", "anchors.png")
 ```
 
@@ -135,15 +60,11 @@ You can vis multiple anchors file by raw_line_proali module
 ```bash
 git clone git@github.com:xiaodli/AnchorWave_proali_vis.git
 cd raw_line_proali
-python main.py line_proali -c line.conf
+python main.py -h
+python main.py line_proali -i 1.Kronos_Svevo.anno.3.anchormove,2.Svevo_XM001097.anno.3.anchormove,3.XM001097_NU00021.anno.3.anchormove,4.NU00021_IG77365.anno.3.anchormove,5.IG77365_IG99236.anno.3.anchormove,6.IG99236_PI294478.anno.3.anchormove,7.PI294478_NU01905.anno.3.anchormove,8.NU01905_NU01954.anno.3.anchormove,9.NU01954_Zavitan.anno.3.anchormove -o ten.line.png -l Kronos.length.txt,Svevo.length.txt,XM001097.length.txt,NU00021.length.txt,IG77365.length.txt,IG99236.length.txt,PI294478.length.txt,NU01905.length.txt,NU01954.length.txt,Zavitan.length.txt -n Kronos,Svevo,XM001097,NU00021,IG77365,IG99236,PI294478,NU01905,NU01954,Zavitan -rm "0" -cf 7 -sf 7 -it -sc "red,blue" -cs "four_colors" -al -gs "compact"
 ```
-  
-Note:
-The following is `line.conf` file.
 
-
-
-1. The following is length file(chr and length column is necessary and tab sep).
+1. The following is length file(chr and length column is necessary, tab sep and no matter how many columns the file has, only the first two are used.).
 
 ```text
 chr  length  total_gene

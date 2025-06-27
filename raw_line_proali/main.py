@@ -10,11 +10,13 @@
 import configparser
 import argparse
 import line_proali_pangenome
-from pathlib import Path
 import os
 import sys
+
+
 class FileEmptyError(Exception):
     pass
+
 def file_empty(file_path):
     try:
         file_path = os.path.abspath(file_path)
@@ -40,16 +42,31 @@ def file_empty(file_path):
 
 def run_line(parameter):
     config_par = configparser.ConfigParser()
-    config_par.read(parameter.conf)
-    file_empty(parameter.conf)
-    line_proali_pangenome.Line(config_par).run()
+    if parameter.conf is not None:
+        file_empty(parameter.conf)
+        config_par.read(parameter.conf)
+    line_proali_pangenome.Line(config_par, parameter).run()
 
-parser = argparse.ArgumentParser(description='Conduct strand and WGD aware syntenic gene identification for a pair of genomes using the longest path algorithm implemented in AnchorWave.', prog="quota_Anchor")
-parser.add_argument('-v', '--version', action='version', version='%(prog)s 0.0.1')
-subparsers = parser.add_subparsers(title='Gene collinearity analysis', dest='analysis')
-# collinearity AnchorWave proali anchors plot
+parser = argparse.ArgumentParser(description='AnchorWave proali subcommand anchors plot.', prog="quota_Anchor")
+parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0.0')
+subparsers = parser.add_subparsers(title='Proali anchors visualization', dest='analysis')
+# AnchorWave proali anchors plot
 parser_sub_line_proali = subparsers.add_parser('line_proali', help='Anchors file from AnchorWave proali to visualization(line style).')
 parser_sub_line_proali.set_defaults(func=run_line)
 parser_sub_line_proali.add_argument('-c', '--conf', dest='conf', help="Configure file.", metavar="")
+parser_sub_line_proali.add_argument('-i', '--collinearity', dest='collinearity', help="Collinearity file(e.g. file1,file2,file3)(Separator: ',').", metavar="")
+parser_sub_line_proali.add_argument('-o', '--savefig', dest='savefig', help="Specify a file name to save figure.", metavar="")
+parser_sub_line_proali.add_argument('-l', '--length_file', dest='length_file', help="Species length file list(e.g. file1,file2,file3)(Separator: ',').", metavar="")
+parser_sub_line_proali.add_argument('-n', '--prefix', dest='prefix', help="Species name list(e.g. name1,name2,name3)(Separator: ',').", metavar="")
+parser_sub_line_proali.add_argument('-rm', '--remove_chromosome_prefix', dest='remove_chromosome_prefix', help="Remove chromosome prefix to plot(e.g. chr,Chr,CHR)(Separator: ',').", metavar="")
+parser_sub_line_proali.add_argument('-cf', '--chr_font_size', dest='chr_font_size', help="Chromosome name font size(defaults: 7).", type=int, metavar="")
+parser_sub_line_proali.add_argument('-sf', '--species_name_font_size', dest='species_name_font_size', help="Species name font size(defaults: 7).", type=int, metavar="")
+parser_sub_line_proali.add_argument('-hc', '--hide_chr', dest='hide_chr', help="Hide chromosome name in the figure.", action='store_true')
+parser_sub_line_proali.add_argument('-it', '--italic', dest='italic', help="Species name italic in the figure.", action='store_true')
+parser_sub_line_proali.add_argument('-sc', '--species_color', dest='sp_chr_color_comma_sep', help="Optional, species chromosome color(comma separated)", metavar="")
+parser_sub_line_proali.add_argument('-fs', '--figsize', dest='figsize', help="Figure size(defaults: 14,14).", metavar="")
+parser_sub_line_proali.add_argument('-cs', '--color_style', dest='color_style', help="Optional, block color style(rainbow, husl, four_colors, two_colors).", type=str, choices=["rainbow", "husl", "four_colors", "two_colors"], metavar="")
+parser_sub_line_proali.add_argument('-al', '--actual_len', dest='actual_len', help="Optional, use actual chromosome length in the figure.", action='store_true')
+parser_sub_line_proali.add_argument('-gs', '--gap_style', dest='gap_style', help="Typing compact or loose(default: loose).", type=str, choices=["loose", "compact"],  metavar="")
 args = parser.parse_args()
 args.func(args)
