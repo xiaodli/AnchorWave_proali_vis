@@ -91,5 +91,5 @@ chr  length  total_gene
 ### line plot
 
 <p align="center">
-<img src="./manual_line_proali/ten.line.png" alt= ./manual_line_proali/ten.line.png width="800px" background-color="#ffffff" />
+<img src="./line10.png" alt= ./manual_line_proali/ten.line.png width="800px" background-color="#ffffff" />
 </p>
