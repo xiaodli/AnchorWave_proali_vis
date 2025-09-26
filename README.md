@@ -105,5 +105,5 @@ python circle.parallel.py  parallel_plot -a block.txt -r ref.length.txt -q query
 ### parallel circle plot
 
 <p align="center">
-<img src="./parallel_circle/test.pdf" alt= ./manual_line_proali/ten.line.png width="800px" background-color="#ffffff" />
+<img src="./parallel_circle/test.pdf" alt= ./parallel_circle/test.pdf width="800px" background-color="#ffffff" />
 </p>
