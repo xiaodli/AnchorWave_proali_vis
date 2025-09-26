@@ -100,6 +100,7 @@ python main.py line_proali -i 1.Kronos_Svevo.anno.3.anchormove,2.Svevo_XM001097.
 cd parallel_circle
 python parse.anchors.proali.py ref_query.anchor block.txt
 python circle.parallel.py  parallel_plot -a block.txt -r ref.length.txt -q query.length.txt -f B -o test.pdf -angle 100
+python circle.parallel.py  parallel_plot -a JM47_genome_NWAFU.Chr21_vs_CAAScds.genome.blocks -r CS-IAAS_v1.1.sort.chrs_length.tsv -q JM47_genome_NWAFU.Chr21.chrs_length.tsv -f "" -o test.pdf -angle 360
 ```
 
 ### parallel circle plot
