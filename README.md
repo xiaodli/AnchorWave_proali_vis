@@ -64,32 +64,46 @@ python main.py line_proali -h
 python main.py line_proali -i 1.Kronos_Svevo.anno.3.anchormove,2.Svevo_XM001097.anno.3.anchormove,3.XM001097_NU00021.anno.3.anchormove,4.NU00021_IG77365.anno.3.anchormove,5.IG77365_IG99236.anno.3.anchormove,6.IG99236_PI294478.anno.3.anchormove,7.PI294478_NU01905.anno.3.anchormove,8.NU01905_NU01954.anno.3.anchormove,9.NU01954_Zavitan.anno.3.anchormove -o ten.line.png -l Kronos.length.txt,Svevo.length.txt,XM001097.length.txt,NU00021.length.txt,IG77365.length.txt,IG99236.length.txt,PI294478.length.txt,NU01905.length.txt,NU01954.length.txt,Zavitan.length.txt -n Kronos,Svevo,XM001097,NU00021,IG77365,IG99236,PI294478,NU01905,NU01954,Zavitan -rm "0" -cf 7 -sf 7 -it -sc "red,blue" -cs "four_colors" -al -gs "compact"
 ```
 
-1. The following is length file (chr and length column is necessary, tab sep and no matter how many columns the file has, only the first two are used).
+    1. The following is length file (chr and length column is necessary, tab sep and no matter how many columns the file has, only the first two are used).
 
-```text
-chr  length  total_gene
-1A  611319266  3772
-1B  749393777  4158
-2A  793380695  4950
-2B  832257163  5398
-3A  762016299  4530
-3B  864951163  4947
-4A  766591834  4214
-4B  703924636  3578
-5A  721915144  4785
-5B  734861517  4869
-6A  633522200  3588
-6B  742827932  3996
-7A  761831191  4622
-7B  762926078  4011
-```
+    ```text
+    chr  length
+    1A  611319266
+    1B  749393777
+    2A  793380695
+    2B  832257163
+    3A  762016299
+    3B  864951163
+    4A  766591834
+    4B  703924636
+    5A  721915144
+    5B  734861517
+    6A  633522200
+    6B  742827932
+    7A  761831191
+    7B  762926078
+    ```
 
-2. prefix is species name.
+    2. prefix is species name.
 
-3. remove_chromosome_prefix is chromosome prefix(comma separated).
+    3. remove_chromosome_prefix is chromosome prefix(comma separated).
 
 ### line plot
 
 <p align="center">
 <img src="./line10.png" alt= ./manual_line_proali/ten.line.png width="800px" background-color="#ffffff" />
+</p>
+
+## paralleo circle style visualization
+
+```bash
+cd parallel_circle
+python parse.anchors.proali.py ref_query.anchor block.txt
+python circle.parallel.py  parallel_plot -a block.txt -r ref.length.txt -q query.length.txt -f B -o test.pdf -angle 100
+```
+
+### parallel circle plot
+
+<p align="center">
+<img src="./parallel_circle/test.pdf" alt= ./manual_line_proali/ten.line.png width="800px" background-color="#ffffff" />
 </p>
