@@ -187,7 +187,7 @@ class Circle:
 
         x.append(x[0])
         y.append(y[0])
-        plt.fill(x, y, alpha=0.75, color=clr, zorder=zorder)
+        plt.fill(x, y, alpha=0.75, color=clr, zorder=zorder, linewidth=0)
         return x, y
 
     def plot_block(self, anchors, rf_mp, qry_mp, r_r, q_r, flg):
