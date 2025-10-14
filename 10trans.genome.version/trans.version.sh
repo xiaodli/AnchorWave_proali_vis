@@ -41,6 +41,6 @@ parallel -j "$(nproc)" "
 #        exit
 #    fi
 
-    quota_Anchor col -i \${query}_\${ref}.table -o \${query}_\${ref}.collinearity -s 0 -a 0 -m 0 -W 0 -t 0 -E -0.005 --overwrite -r 1 -q 1
+    quota_Anchor col -i \${query}_\${ref}.table -o \${query}_\${ref}.collinearity -s 0 -a 0 -m -1 -W 0 -t 0 -E -0.005 --overwrite -r 1 -q 1
 
 " ::: "${array_query[@]}" ::: "${array_ref[@]}"

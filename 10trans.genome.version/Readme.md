@@ -89,7 +89,7 @@ quota_Anchor pre_col -a diamond -qs output_dir/01longest/zm.ncbi.longest.pep -rs
 ## 共线性分析，下边这个算法和JCVI中的quota_align不同，JCVI中的quota_align结果中存在一些基因对不符合你设置的R Q值（需要你写脚本自己去处理）， 下边这个是严格符合R，Q的，下边的结果严格符合1:1的
 
 ```bash
-quota_Anchor col -i zea.mays_ncbi.table -o zea.mays_ncbi.table.collinearity -s 0 -W 0 -E -0.005 -D 25 -r 1 -q 1 --overwrite
+quota_Anchor col -i zea.mays_ncbi.table -o zea.mays_ncbi.table.collinearity -s 0 -W 0 -E -0.005 -D 25 -r 1 -q 1 --overwrite -m -1
 ```
 
 ## 之前的步骤已经完成了不同版本基因组的id对应，下边是可视化
