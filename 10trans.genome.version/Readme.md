@@ -28,11 +28,12 @@ mwget -n 16 https://ftp.ebi.ac.uk/ensemblgenomes/pub/release-61/plants/fasta/zea
 ```bash
 tree raw_data
 ```
-
+```
 ├── Zea.mays.fa
 ├── Zea.mays.gff3
 ├── zm.ncbi.fa
 └── zm.ncbi.gff3
+```
 
 ## 提取最长转录本  1）不支持GTF文件，2）将基因组和注释文件名字分别改为 gff3 fa后缀
 
